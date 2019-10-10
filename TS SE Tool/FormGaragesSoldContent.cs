@@ -70,7 +70,8 @@ namespace TS_SE_Tool
                                 TruckName = templine.Split(new char[] { '"' })[1].Split(new char[] { '/' })[4];
                             }
                             catch { }
-                            MainForm.TruckBrandsLngDict.TryGetValue(TruckName, out string trucknamevalue);
+                            string trucknamevalue = "";
+                            MainForm.TruckBrandsLngDict.TryGetValue(TruckName, out trucknamevalue);
 
                             if (trucknamevalue != null && trucknamevalue != "")
                             {
@@ -115,7 +116,8 @@ namespace TS_SE_Tool
                         TruckName = templine.Split(new char[] { '"' })[1].Split(new char[] { '/' })[4];
                     }
                     catch { }
-                    MainForm.TruckBrandsLngDict.TryGetValue(TruckName, out string trucknamevalue);
+                    string trucknamevalue = "";
+                    MainForm.TruckBrandsLngDict.TryGetValue(TruckName, out trucknamevalue);
 
                     if (trucknamevalue != null && trucknamevalue != "")
                     {

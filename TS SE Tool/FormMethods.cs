@@ -1594,7 +1594,8 @@ namespace TS_SE_Tool
 
         private void UpdateTruckPanelProgressBars()
         {
-            UserTruckDictionary.TryGetValue(comboBoxUserTruckCompanyTrucks.SelectedValue.ToString(), out UserCompanyTruckData SelectedUserCompanyTruck);
+            UserCompanyTruckData SelectedUserCompanyTruck;
+            UserTruckDictionary.TryGetValue(comboBoxUserTruckCompanyTrucks.SelectedValue.ToString(), out SelectedUserCompanyTruck);
 
             for (int i = 0; i < 5; i++)
             {
@@ -1783,7 +1784,8 @@ namespace TS_SE_Tool
                     truckname = templine.Split(new char[] { '"' })[1].Split(new char[] { '/' })[4];
                 }
                 catch { }
-                TruckBrandsLngDict.TryGetValue(truckname, out string trucknamevalue);
+                string trucknamevalue = "";
+                TruckBrandsLngDict.TryGetValue(truckname, out trucknamevalue);
 
                 string TruckName = "";
 
@@ -2070,7 +2072,8 @@ namespace TS_SE_Tool
 
         private void UpdateTrailerPanelProgressBars()
         {
-            UserTrailerDictionary.TryGetValue(comboBoxUserTrailerCompanyTrailers.SelectedValue.ToString(), out UserCompanyTruckData SelectedUserCompanyTrailer);
+            UserCompanyTruckData SelectedUserCompanyTrailer;
+            UserTrailerDictionary.TryGetValue(comboBoxUserTrailerCompanyTrailers.SelectedValue.ToString(), out SelectedUserCompanyTrailer);
 
             for (int i = 0; i < 4; i++)
             {
@@ -2293,7 +2296,8 @@ namespace TS_SE_Tool
             foreach (Garages garage in from x in GaragesList where !x.IgnoreStatus && x.GarageStatus != 0 select x)
             {
                 string CityName = garage.GarageName;
-                CitiesLngDict.TryGetValue(CityName, out string value);
+                string value = "";
+                CitiesLngDict.TryGetValue(CityName, out value);
 
                 if (value != null && value != "")
                     combDT.Rows.Add(CityName, value);
@@ -2428,7 +2432,7 @@ namespace TS_SE_Tool
             // Draw the text.
             string txt = "", DisplayCityName = "";
 
-            //CitiesLngDict.TryGetValue(vc.CityName, out string value);
+            //CitiesLngDict.TryGetValue(vc.CityName, out value);
             DisplayCityName = vc.CityNameTranslated;
 
             if (DisplayCityName != null && DisplayCityName != "")
@@ -2945,7 +2949,8 @@ namespace TS_SE_Tool
                 height = e.Bounds.Bottom - JobsItemMargin - y;
                 layout_rect = new RectangleF(x, y, width, height);
 
-                if (CargoLngDict.TryGetValue(Job.Cargo, out string CargoName))
+                string CargoName = "";
+                if (CargoLngDict.TryGetValue(Job.Cargo, out CargoName))
                 {
                     if (CargoName != null && CargoName != "")
                     {
@@ -3101,8 +3106,9 @@ namespace TS_SE_Tool
             dc = new DataColumn("CompanyName", typeof(string));
             combDT.Columns.Add(dc);
 
+            string value = "";
             foreach (string tempitem in tempCompList)
-                if (CompaniesLngDict.TryGetValue(tempitem, out string value))
+                if (CompaniesLngDict.TryGetValue(tempitem, out value))
                     if (value != null && value != "")
                     {
                         combDT.Rows.Add(tempitem, value);
@@ -3153,7 +3159,8 @@ namespace TS_SE_Tool
                                       where !x.Disabled
                                       select x)
             {
-                CitiesLngDict.TryGetValue(tempcity.CityName, out string value);
+                string value = "";
+                CitiesLngDict.TryGetValue(tempcity.CityName, out value);
                 if (value != null && value != "")
                 {
                     combDT.Rows.Add(tempcity.CityName, value);
@@ -3185,7 +3192,8 @@ namespace TS_SE_Tool
 
             foreach (Cargo tempitem in CargoesList)
             {
-                if (CargoLngDict.TryGetValue(tempitem.CargoName, out string value))
+                string value = "";
+                if (CargoLngDict.TryGetValue(tempitem.CargoName, out value))
                 {
                     if (value != null && value != "")
                     {
@@ -3387,7 +3395,8 @@ namespace TS_SE_Tool
             foreach (int tempitem in UrgencyArray)
             {
                 string str = tempitem.ToString();
-                if (UrgencyLngDict.TryGetValue(str, out string value))
+                string value = "";
+                if (UrgencyLngDict.TryGetValue(str, out value))
                 {
                     if (value != null && value != "")
                     {
@@ -3750,8 +3759,9 @@ namespace TS_SE_Tool
             dc = new DataColumn("CompanyName", typeof(string));
             combDT.Columns.Add(dc);
 
+            string value = "";
             foreach (Company company in list2)
-                if (CompaniesLngDict.TryGetValue(company.CompanyName, out string value))
+                if (CompaniesLngDict.TryGetValue(company.CompanyName, out value))
                     if (value != "")
                     {
                         combDT.Rows.Add(company.CompanyName, value);
@@ -3874,8 +3884,9 @@ namespace TS_SE_Tool
                     companyList = companyList.FindAll(x => x.CompanyName == comboBoxFreightMarketCompanies.SelectedValue.ToString());
                 }
 
+                string CityNamevalue = "";
                 if (companyList.Count > 0)
-                    if (CitiesLngDict.TryGetValue(city.CityName, out string CityNamevalue))
+                    if (CitiesLngDict.TryGetValue(city.CityName, out CityNamevalue))
                         if (CityNamevalue != null && CityNamevalue != "")
                             combDT.Rows.Add(city.CityName, CityNamevalue);
                         else
@@ -3926,7 +3937,8 @@ namespace TS_SE_Tool
 
             foreach (Company company in RealCompanies)
             {
-                CompaniesLngDict.TryGetValue(company.CompanyName, out string value);
+                string value = "";
+                CompaniesLngDict.TryGetValue(company.CompanyName, out value);
                 if (value != null && value != "")
                 {
                     combDT.Rows.Add(company.CompanyName, value);
@@ -4120,7 +4132,8 @@ namespace TS_SE_Tool
             //fill source and destination cities
             foreach (City tempcity in from x in CitiesList where !x.Disabled select x)
             {
-                CitiesLngDict.TryGetValue(tempcity.CityName, out string value);
+                string value = "";
+                CitiesLngDict.TryGetValue(tempcity.CityName, out value);
                 if (value != null && value != "")
                     combDT.Rows.Add(tempcity.CityName, value);
                 else
@@ -4168,7 +4181,8 @@ namespace TS_SE_Tool
 
             foreach (Company company in RealCompanies)
             {
-                CompaniesLngDict.TryGetValue(company.CompanyName, out string value);
+                string value = "";
+                CompaniesLngDict.TryGetValue(company.CompanyName, out value);
                 if (value != null && value != "")
                 {
                     combDT.Rows.Add(company.CompanyName, value);
@@ -4347,7 +4361,7 @@ namespace TS_SE_Tool
 
             foreach (string trailertype in TrailerTypes)
             {
-                //CompaniesLngDict.TryGetValue(trailertype.CompanyName, out string value);
+                //CompaniesLngDict.TryGetValue(trailertype.CompanyName, out value);
                 combDT.Rows.Add(trailertype, CultureInfo.InvariantCulture.TextInfo.ToTitleCase(trailertype));
                 
             }

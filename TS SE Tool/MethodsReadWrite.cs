@@ -447,7 +447,8 @@ namespace TS_SE_Tool
 
             foreach (string tempitem in CompaniesList )
             {
-                if (!CompaniesLngDict.TryGetValue(tempitem, out string value))
+                string value = "";
+                if (!CompaniesLngDict.TryGetValue(tempitem, out value))
                 {
                     newEntries.Add(tempitem);
                 }
@@ -492,7 +493,8 @@ namespace TS_SE_Tool
 
             foreach (City tempitem in CitiesList)
             {
-                if (!CitiesLngDict.TryGetValue(tempitem.CityName, out string value))
+                string value = "";
+                if (!CitiesLngDict.TryGetValue(tempitem.CityName, out value))
                 {
                     newEntries.Add(tempitem.CityName);
                 }
@@ -536,7 +538,8 @@ namespace TS_SE_Tool
 
             foreach (Cargo tempitem in CargoesList)
             {
-                if (!CargoLngDict.TryGetValue(tempitem.CargoName, out string value))
+                string value = "";
+                if (!CargoLngDict.TryGetValue(tempitem.CargoName, out value))
                 {
                     newEntries.Add(tempitem.CargoName);
                 }

@@ -1796,7 +1796,8 @@ namespace TS_SE_Tool
 
                     tempStr = FreightMarketJob.Urgency.ToString();
 
-                    if (UrgencyLngDict.TryGetValue(tempStr, out string value))
+                    string value = "";
+                    if (UrgencyLngDict.TryGetValue(tempStr, out value))
                     {
                         if (value != null && value != "")
                         {
